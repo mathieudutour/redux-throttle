@@ -11,10 +11,10 @@ function map (throttled, action, method) {
     }
     Object.keys(throttled)
       .filter((t) => types.includes(t))
-      .forEach((t) => t[method]())
+      .forEach((t) => throttled[t][method]())
     return
   }
-  Object.keys(throttled).forEach((t) => t[method]())
+  Object.keys(throttled).forEach((t) => throttled[t][method]())
   return
 }
 
