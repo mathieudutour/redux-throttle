@@ -26,7 +26,7 @@ const defaultThrottleOption = { // https://lodash.com/docs#throttle
   trailing: true
 }
 
-const middleware = throttleActions(defaultWait, defaultThrottleOption);
+const middleware = throttle(defaultWait, defaultThrottleOption);
 const store = applyMiddleware(middleware)(createStore)(reducers);
 ```
 
