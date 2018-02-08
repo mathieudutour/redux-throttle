@@ -18,7 +18,6 @@ npm install --save redux-throttle
 import {createStore, applyMiddleware} from "redux";
 import throttle from "redux-throttle";
 import reducers from "./reducers";
-import actionTypes from "./constants/actionTypes";
 
 const defaultWait = 300
 const defaultThrottleOption = { // https://lodash.com/docs#throttle
