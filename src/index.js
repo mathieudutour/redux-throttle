@@ -2,6 +2,7 @@ import throttle from 'lodash.throttle'
 
 export const CANCEL = 'redux-throttle/CANCEL'
 export const FLUSH = 'redux-throttle/FLUSH'
+export const EMPTY_THROTTLED = 'redux-throttle/EMPTY_THROTTLED'
 
 function map (throttled, action, method) {
   if (action.payload && action.payload.type) {
@@ -19,7 +20,7 @@ function map (throttled, action, method) {
 }
 
 export default function middleware (defaultWait = 300, defaultThrottleOption = {}) {
-  const throttled = {}
+  let throttled = {}
   return (store) => (next) => (action) => {
     if (action.type === CANCEL) {
       map(throttled, action, 'cancel')
@@ -28,6 +29,11 @@ export default function middleware (defaultWait = 300, defaultThrottleOption = {
 
     if (action.type === FLUSH) {
       map(throttled, action, 'flush')
+      return next(action)
+    }
+
+    if (action.type === EMPTY_THROTTLED) {
+      throttled = {}
       return next(action)
     }
 

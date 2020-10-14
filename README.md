@@ -58,10 +58,10 @@ Then you just have to dispatch actions with the meta `throttle`:
 
 ```
 
-There are 2 special actions exported by the library:
+There are 3 special actions exported by the library:
 
 ```js
-import {CANCEL, FLUSH} from "redux-throttle";
+import {CANCEL, FLUSH, EMPTY_THROTTLED} from "redux-throttle";
 
 dispatch({
   type: CANCEL,
@@ -79,6 +79,10 @@ dispatch({
 
 dispatch({ // will flush everything
   type: FLUSH
+})
+
+dispatch({ // will empty throttled
+  type: EMPTY_THROTTLED
 })
 ```
 
